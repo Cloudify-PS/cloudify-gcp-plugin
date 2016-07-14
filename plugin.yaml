@@ -86,6 +86,8 @@ node_types:
               default: ''
             tags:
               default: { get_property: [SELF, tags]}
+            additional_settings:
+              default: { get_property: [SELF, additional_settings]}
         start:
           implementation: gcp_plugin.gcp.compute.instance.start
           inputs:
@@ -134,6 +136,8 @@ node_types:
               default: { get_property: [SELF, name]}
             named_ports:
               default: { get_property: [SELF, named_ports]}
+            additional_settings:
+              default: { get_property: [SELF, additional_settings]}
         delete:
           implementation: gcp_plugin.gcp.compute.instance_group.delete
 
@@ -182,6 +186,8 @@ node_types:
               default: { get_property: [SELF, name] }
             size:
               default: { get_property: [SELF, size] }
+            additional_settings:
+              default: { get_property: [SELF, additional_settings]}
         delete:
           implementation: gcp_plugin.gcp.compute.disk.delete
 
@@ -212,6 +218,8 @@ node_types:
           inputs:
             network:
               default: {}
+            additional_settings:
+              default: { get_property: [SELF, additional_settings]}
         delete:
           implementation: gcp_plugin.gcp.compute.network.delete
 
@@ -249,6 +257,8 @@ node_types:
               default: {}
             name:
               default: { get_property: [SELF, name] }
+            additional_settings:
+              default: { get_property: [SELF, additional_settings]}
         delete:
           implementation: gcp_plugin.gcp.compute.firewall.delete
 
@@ -291,6 +301,8 @@ node_types:
               default: { get_property: [SELF, rules] }
             name:
               default: { get_property: [SELF, name] }
+            additional_settings:
+              default: { get_property: [SELF, additional_settings]}
         delete:          
           implementation: gcp_plugin.gcp.compute.firewall.delete_security_group
 
@@ -395,6 +407,8 @@ node_types:
           inputs:
             name:
               default: { get_property: [SELF, name]}
+            additional_settings:
+              default: { get_property: [SELF, additional_settings]}
         delete:
           implementation: gcp_plugin.gcp.compute.static_ip.delete
 
@@ -431,6 +445,8 @@ node_types:
               default: { get_property: [ SELF, image_name ] }
             image_path:
               default: { get_property: [ SELF, image_path ] }
+            additional_settings:
+              default: { get_property: [SELF, additional_settings]}
         delete:
           implementation: gcp_plugin.gcp.compute.image.delete
 
@@ -570,6 +586,8 @@ node_types:
               default: { get_property: [SELF, name]}
             default_service:
               default: { get_property: [SELF, default_service]}
+            additional_settings:
+              default: { get_property: [SELF, additional_settings]}
         delete:
           implementation: gcp_plugin.gcp.compute.url_map.delete
 
@@ -630,6 +648,8 @@ node_types:
               default: { get_property: [SELF, url_map]}
             ssl_certificate:
               default: { get_property: [SELF, ssl_certificate]}
+            additional_settings:
+              default: { get_property: [SELF, additional_settings]}
         delete:
           implementation: gcp_plugin.gcp.compute.target_proxy.delete
 
@@ -684,6 +704,8 @@ node_types:
               default: { get_property: [SELF, private_key]}
             certificate:
               default: { get_property: [SELF, certificate]}
+            additional_settings:
+              default: { get_property: [SELF, additional_settings]}
         delete:
           implementation: gcp_plugin.gcp.compute.ssl_certificate.delete
 
@@ -746,6 +768,8 @@ node_types:
               default: { get_property: [SELF, port_range]}
             ip_address:
               default: { get_property: [SELF, ip_address]}
+            additional_settings:
+              default: { get_property: [SELF, additional_settings]}
         delete:
           implementation: gcp_plugin.gcp.compute.forwarding_rule.delete
 

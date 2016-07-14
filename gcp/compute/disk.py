@@ -26,9 +26,10 @@ class Disk(GoogleCloudPlatform):
                  config,
                  logger,
                  name,
+                 additional_settings=None,
                  image=None,
                  size_gb=None):
-        super(Disk, self).__init__(config, logger, name)
+        super(Disk, self).__init__(config, logger, name, additional_settings)
         self.image = image
         self.sizeGb = size_gb
 
@@ -37,11 +38,12 @@ class Disk(GoogleCloudPlatform):
             'description': 'Cloudify generated disk',
             'name': self.name
         }
+        self.body.update(body)
         if self.image:
-            body['sourceImage'] = self.image
+            self.body['sourceImage'] = self.image
         if self.sizeGb:
-            body['sizeGb'] = self.sizeGb
-        return body
+            self.body['sizeGb'] = self.sizeGb
+        return self.body
 
     def disk_to_insert_instance_dict(self, mount_name):
         disk_info = self.get()
@@ -84,14 +86,15 @@ class Disk(GoogleCloudPlatform):
 
 @operation
 @utils.throw_cloudify_exceptions
-def create(image, name, size, **kwargs):
+def create(image, name, size, additional_settings, **kwargs):
     name = utils.get_final_resource_name(name)
     gcp_config = utils.get_gcp_config()
     disk = Disk(gcp_config,
                 ctx.logger,
                 image=image,
                 name=name,
-                size_gb=size)
+                size_gb=size,
+                additional_settings=additional_settings)
     utils.create(disk)
     ctx.instance.runtime_properties[constants.NAME] = name
     ctx.instance.runtime_properties[constants.DISK] = \

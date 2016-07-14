@@ -28,8 +28,13 @@ class GlobalForwardingRule(GoogleCloudPlatform):
                  name,
                  target_proxy=None,
                  port_range=None,
-                 ip_address=None):
-        super(GlobalForwardingRule, self).__init__(config, logger, name)
+                 ip_address=None,
+                 additional_settings=None):
+        super(GlobalForwardingRule, self).__init__(config,
+                                                   logger,
+                                                   name,
+                                                   additional_settings=
+                                                   additional_settings)
         self.target_proxy = target_proxy
         self.port_range = port_range
         self.ip_address = ip_address
@@ -42,7 +47,8 @@ class GlobalForwardingRule(GoogleCloudPlatform):
             'portRange': self.port_range,
             'IPAddress': self.ip_address
         }
-        return body
+        self.body.update(body)
+        return self.body
 
     @check_response
     def get(self):
@@ -70,7 +76,8 @@ class GlobalForwardingRule(GoogleCloudPlatform):
 
 @operation
 @utils.throw_cloudify_exceptions
-def create(name, target_proxy, port_range, ip_address, **kwargs):
+def create(name, target_proxy, port_range,
+           ip_address, additional_settings, **kwargs):
     name = utils.get_final_resource_name(name)
     gcp_config = utils.get_gcp_config()
     forwarding_rule = GlobalForwardingRule(gcp_config,
@@ -78,7 +85,9 @@ def create(name, target_proxy, port_range, ip_address, **kwargs):
                                            name,
                                            target_proxy,
                                            port_range,
-                                           ip_address)
+                                           ip_address,
+                                           additional_settings=
+                                           additional_settings)
     utils.create(forwarding_rule)
     ctx.instance.runtime_properties[constants.NAME] = name
 
