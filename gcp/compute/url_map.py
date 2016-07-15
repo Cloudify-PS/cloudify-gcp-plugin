@@ -35,7 +35,7 @@ class UrlMap(GoogleCloudPlatform):
         self.default_service = default_service
 
     def to_dict(self):
-        self.body.udpdate({
+        self.body.update({
             'description': 'Cloudify generated URL Map',
             'name': self.name,
             'defaultService': self.default_service
