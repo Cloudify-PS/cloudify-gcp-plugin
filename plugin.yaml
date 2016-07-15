@@ -127,6 +127,7 @@ node_types:
       additional_settings:
         description: >
           Additional setting for instance group
+        default: {}
     interfaces:
       cloudify.interfaces.lifecycle:
         create:
@@ -175,6 +176,7 @@ node_types:
       additional_settings:
         description: >
           Additional setting for volume
+        default: {}
     interfaces:
       cloudify.interfaces.lifecycle:
         create:
@@ -211,6 +213,7 @@ node_types:
       additional_settings:
         description: >
           Additional setting for network
+        default: {}
     interfaces:
       cloudify.interfaces.lifecycle:
         create:
@@ -248,6 +251,7 @@ node_types:
       additional_settings:
         description: >
           Additional setting for firewall
+        default: {}
     interfaces:
       cloudify.interfaces.lifecycle:
         create:
@@ -292,6 +296,7 @@ node_types:
       additional_settings:
         description: >
           Additional setting for firewall
+        default: {}
     interfaces:
       cloudify.interfaces.lifecycle:
         create: 
@@ -400,6 +405,7 @@ node_types:
       additional_settings:
         description: >
           Additional setting for static ip
+        default: {}
     interfaces:
       cloudify.interfaces.lifecycle:
         create:
@@ -436,6 +442,7 @@ node_types:
       additional_settings:
         description: >
           Additional setting for image
+        default: {}
     interfaces:
       cloudify.interfaces.lifecycle:
         create:
@@ -577,6 +584,7 @@ node_types:
       additional_settings:
         description: >
           Additional setting for url map
+        default: {}
     interfaces:
       cloudify.interfaces.lifecycle:
         create:
@@ -635,6 +643,7 @@ node_types:
       additional_settings:
         description: >
           Additional setting for target proxy
+        default: {}
     interfaces:
       cloudify.interfaces.lifecycle:
         create:
@@ -693,6 +702,7 @@ node_types:
       additional_settings:
         description: >
           Additional setting for target proxy
+        default: {}
     interfaces:
       cloudify.interfaces.lifecycle:
         create:
@@ -755,6 +765,7 @@ node_types:
       additional_settings:
         description: >
           Additional setting for ssl certificate
+        default: {}
     interfaces:
       cloudify.interfaces.lifecycle:
         create:
