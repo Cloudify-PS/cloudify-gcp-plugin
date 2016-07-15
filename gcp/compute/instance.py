@@ -59,8 +59,8 @@ class Instance(GoogleCloudPlatform):
         super(Instance, self).__init__(
             config,
             logger,
-            additional_settings,
-            utils.get_gcp_resource_name(name))
+            utils.get_gcp_resource_name(name),
+            additional_settings)
         self.image = image
         self.machine_type = machine_type
         self.network = config['network']

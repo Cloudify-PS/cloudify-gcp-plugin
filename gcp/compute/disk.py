@@ -34,11 +34,10 @@ class Disk(GoogleCloudPlatform):
         self.sizeGb = size_gb
 
     def to_dict(self):
-        body = {
+        self.body.update({
             'description': 'Cloudify generated disk',
             'name': self.name
-        }
-        self.body.update(body)
+        })
         if self.image:
             self.body['sourceImage'] = self.image
         if self.sizeGb:

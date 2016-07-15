@@ -40,14 +40,13 @@ class GlobalForwardingRule(GoogleCloudPlatform):
         self.ip_address = ip_address
 
     def to_dict(self):
-        body = {
+        self.body.update({
             'description': 'Cloudify generated Global Forwarding Rule',
             'name': self.name,
             'target': self.target_proxy,
             'portRange': self.port_range,
             'IPAddress': self.ip_address
-        }
-        self.body.update(body)
+        })
         return self.body
 
     @check_response

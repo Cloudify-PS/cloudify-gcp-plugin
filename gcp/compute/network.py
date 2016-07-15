@@ -100,11 +100,10 @@ class Network(GoogleCloudPlatform):
         self.iprange = self.body['IPv4Range']
 
     def to_dict(self):
-        body = {
+        self.body.update({
             'description': 'Cloudify generated network',
             'name': self.name
-        }
-        self.body.update(body)
+        })
         return self.body
 
 
